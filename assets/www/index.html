@@ -40,6 +40,9 @@
                 <!-- Begin page content -->
                 <div class="container">
                     <p>Little guy goes here</p>
+                    <div id="critter_health">
+
+                    </div>
                 </div>
 
                 <div id="push"></div>
@@ -56,15 +59,15 @@
                 <p class="event listening">Connectinggggg to Device</p>
                 <p class="event received">Device is Ready</p>
             </div> -->
-        <div id="critter_health">
-
-        </div>
+        
+        <script src="http://code.jquery.com/jquery.js"></script>
         <script type="text/javascript" src="cordova-2.5.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+            $(document).ready(function() {
+                app.initialize();
+            });
         </script>
-        <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

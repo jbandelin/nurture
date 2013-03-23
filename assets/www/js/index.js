@@ -20,17 +20,26 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        this.triggerMockEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        //alert("test!");
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener('batterystatus', this.critterHealth, false);
-        document.addEventListener('batterylow', this.critterLow, false);
-        document.addEventListener('batterycritical', this.critterCrit, false);
+        // debugger;
+        // document.addEventListener('deviceready', this.onDeviceReady, false);
+        //window.addEventListener('batterystatus', this.critterHealth, false);
+        //$(window).on('batterystatus', function() {
+         //   console.log("battery status change ")
+        //});
+        $(window).on('batterystatus', this.critterHealth)
+        $(window).on('batterylow', this.critterLow);
+
+        $(window).on('batterycritical', this.critterCrit)
+
+        //document.addEventListener('batterylow', this.critterLow, false);
+        //document.addEventListener('batterycritical', this.critterCrit, false);
     },
     // deviceready Event Handler
     //
@@ -38,7 +47,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-        app.receivedEvent('deviceready');
+        //app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -52,29 +61,59 @@ var app = {
         console.log('Received Event: ' + id);
     },
     //Update the critter Health
-    critterHealth: function(info){
+    critterHealth: function(event){
+        var info = event.info
         var status = "Battery Status is: ";
         status += info.level;
-        this.drawStatus(status);
+        app.drawStatus(status);
     }, 
 
     //The critter's health is low!
-    critterLow: function(info){
+    critterLow: function(event){
+        var info = event.info
         var status = "Your critter's health is getting low :( Current battery level is: ";
         status += info.level;
-        this.drawStatus(status);
+        console.log(status)
+        app.drawStatus(status);
     }, 
 
     //The critter's health is critically low! 
-    critterCrit: function(info){
+    critterCrit: function(event){
+        var info = event.info
         var status = "Your critter's health is critically low :( plug in your phone before he gets sick! Current battery level is: ";
         status += info.level;
-        this.drawStatus(status);
+        console.log(status);
+        app.drawStatus(status);
     },
 
     //Temp, log the current status in the health div
     drawStatus: function(status){
         healthDiv = document.getElementById("critter_health");
         healthDiv.innerHTML = status;
+    },
+    triggerMockEvents: function(){
+        var event = $.Event('batterystatus');
+        event.info = {
+            level: 50
+        };
+        setTimeout(function(){
+            $(window).trigger(event);
+        }, 1000);
+
+        var event2 = $.Event('batterylow');
+        event2.info = {
+            level: 15
+        };
+        setTimeout(function(){
+            $(window).trigger(event2);
+        }, 5000);
+
+        var event3 = $.Event('batterycritical');
+        event3.info = {
+            level: 5
+        };
+        setTimeout(function(){
+            $(window).trigger(event3);
+        }, 10000);
     }
 };
