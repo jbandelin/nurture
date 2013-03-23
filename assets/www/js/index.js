@@ -33,6 +33,13 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        
+        window.addEventListener("batterycritical", onBatteryCritical, false);
+
+        function onBatteryCritical(info) {
+            // Handle the battery critical event
+            alert("Battery Level Critical " + info.level + "%\nRecharge Soon!"); 
+        }
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
