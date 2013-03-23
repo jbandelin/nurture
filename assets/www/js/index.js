@@ -27,19 +27,16 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('batterystatus', this.critterHealth, false);
+        document.addEventListener('batterylow', this.critterLow, false);
+        docutment.addEventListener('batterycritical', this.critterCrit, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        
-        window.addEventListener("batterycritical", onBatteryCritical, false);
 
-        function onBatteryCritical(info) {
-            // Handle the battery critical event
-            alert("Battery Level Critical " + info.level + "%\nRecharge Soon!"); 
-        }
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -52,5 +49,31 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    //Update the critter Health
+    critterHealth: function(info){
+        var status = "Battery Status is: ";
+        status += info.level;
+        this.drawStatus(status);
+    }, 
+
+    //The critter's health is low!
+    critterLow: function(info){
+        var status = "Your critter's health is getting low :( Current battery level is: ";
+        status += info.level;
+        this.drawStatus(status);
+    }, 
+
+    //The critter's health is critically low! 
+    critterCrit: function(info){
+        var status = "Your critter's health is critically low :( plug in your phone before he gets sick! Current battery level is: ";
+        status += info.level;
+        this.drawStatus(status);
+    },
+
+    //Temp, log the current status in the health div
+    drawStatus: function(status){
+        healthDiv = document.getElementById("critter_health");
+        healthDiv.innerHTML = status;
     }
 };
