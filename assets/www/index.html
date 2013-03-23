@@ -45,9 +45,9 @@
                     <div class="critter-status hidden">
                         <ul>
                             <li>Gaining: 10 points per hour</li>
+                            <li id="critter_health"></li>
                         </ul>
                     </div>
-
                 </div>
 
                 <div id="push"></div>
@@ -67,15 +67,15 @@
                 <p class="event listening">Connectinggggg to Device</p>
                 <p class="event received">Device is Ready</p>
             </div> -->
-        <div id="critter_health">
-
-        </div>
+        
+        <script src="http://code.jquery.com/jquery.js"></script>
         <script type="text/javascript" src="cordova-2.5.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+            $(document).ready(function() {
+                app.initialize();
+            });
         </script>
-        <script src="http://code.jquery.com/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.hammer.min.js"></script>
         <script src="js/ui.js"></script>
