@@ -98,3 +98,6 @@ code {
   display: none;
 }
 
+.battery {
+  float: right;
+}
