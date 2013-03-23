@@ -98,3 +98,24 @@ code {
   display: none;
 }
 
+.enabled {
+  border-style: solid;
+  border-color: #148517;
+  border-radius: 15px;
+}
+
+.disabled {
+  border-style: solid;
+  border-color: #dbdbdc;
+  border-radius: 15px;
+}
+
+
+.trophy {
+  margin:2em;
+  text-align:center;
+}
+
+
+
+
