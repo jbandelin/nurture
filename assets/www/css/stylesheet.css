@@ -88,6 +88,7 @@ code {
 .critter-animation img {
   width: 100%;
   max-width: 480px;
+  margin: 0 auto;
 }
 
 .content.container {
@@ -121,4 +122,19 @@ code {
 .trophy {
   margin:2em;
   text-align:center;
+}
+.container .button{
+  background:#EEE url(../img/icons.png) no-repeat 50% 15px; 
+  height: 85px;
+  margin-bottom: 10px; 
+}
+.container .share{
+  background-position: 50% -430px;  
+}.container .store{
+   background-position: 50% -280px; 
+}.container .leaderboard{
+   background-position: 50% -78px;
+}
+.container .critter{
+   background-position: 50% -185px;
 }
