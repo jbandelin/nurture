@@ -5,6 +5,7 @@
     
     // SETUP
     var POINTS = 1288;
+    var PERCENT_DIFF = 0;
     var BATTERY = 100;
 
     var drawPoints = function(){
@@ -30,6 +31,10 @@
         $(".critter-animation img").attr("src", imgSrc)
     }
 
+    var addPoints = function(points){
+        $(".added-points").text(points);
+    }
+
     drawPoints();
 
     // bind to events
@@ -44,11 +49,15 @@
         setCritterAnimation("img/dance-low.gif");
         drawBattery(10);
 
+        addPoints(-10);
+
     });
 
     $(window).on("batterycritical", function(event){
         setCritterAnimation("img/dance-critical.gif");
         drawBattery(0);
+
+        addPoints(-20);
     });
 
     // toggle critter panel
@@ -68,6 +77,9 @@
         $(".critter-animation").removeClass("hidden");
         $(".trophies-panel").addClass("hidden");
     })
+
+    // Add/remove points on an interval
+
 
 
 })();

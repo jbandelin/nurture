@@ -94,11 +94,12 @@ var app = {
     triggerMockEvents: function(){
         var event = $.Event('batterystatus');
         event.info = {
-            level: 50
+            level: 50,
         };
         setTimeout(function(){
             $(window).trigger(event);
         }, 5000);
+
 
         var event2 = $.Event('batterylow');
         event2.info = {
