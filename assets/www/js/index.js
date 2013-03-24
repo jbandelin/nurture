@@ -63,16 +63,18 @@ var app = {
     //Update the critter Health
     critterHealth: function(event){
         var info = event.info
-        var status = "Battery Status is: ";
+        var status = "Your critter's health is at: ";
         status += info.level;
+        status += '%'
         app.drawStatus(status);
     }, 
 
     //The critter's health is low!
     critterLow: function(event){
         var info = event.info
-        var status = "Your critter's health is getting low :( Current battery level is: ";
+        var status = "Your critter's health is getting low: ";
         status += info.level;
+        status += "%"
         console.log(status)
         app.drawStatus(status);
     }, 
@@ -80,8 +82,9 @@ var app = {
     //The critter's health is critically low! 
     critterCrit: function(event){
         var info = event.info
-        var status = "Your critter's health is critically low :( plug in your phone before he gets sick! Current battery level is: ";
+        var status = "Your critter's health is critically low at: ";
         status += info.level;
+        status += "%"
         console.log(status);
         app.drawStatus(status);
     },
