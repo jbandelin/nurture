@@ -33,14 +33,21 @@
     drawPoints();
 
     // bind to events
+    $(window).on("batterystatus", function(event){
+        setCritterAnimation("img/dance-50.gif");
+        drawBattery(10);
+
+    });
+
+    // bind to events
     $(window).on("batterylow", function(event){
-        setCritterAnimation("img/dance3.gif");
+        setCritterAnimation("img/dance-low.gif");
         drawBattery(10);
 
     });
 
     $(window).on("batterycritical", function(event){
-        setCritterAnimation("img/creature-ghost.png");
+        setCritterAnimation("img/dance-critical.gif");
         drawBattery(0);
     });
 

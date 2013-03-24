@@ -98,7 +98,7 @@ var app = {
         };
         setTimeout(function(){
             $(window).trigger(event);
-        }, 500);
+        }, 5000);
 
         var event2 = $.Event('batterylow');
         event2.info = {
@@ -106,7 +106,7 @@ var app = {
         };
         setTimeout(function(){
             $(window).trigger(event2);
-        }, 2000);
+        }, 10000);
 
         var event3 = $.Event('batterycritical');
         event3.info = {
@@ -114,6 +114,6 @@ var app = {
         };
         setTimeout(function(){
             $(window).trigger(event3);
-        }, 5000);
+        }, 15000);
     }
 };
