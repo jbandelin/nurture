@@ -114,6 +114,10 @@ code {
 }
 
 
+.trophies-panel .span1{
+  width:25%;
+  float:left;
+}
 .trophy {
   margin:2em;
   text-align:center;
